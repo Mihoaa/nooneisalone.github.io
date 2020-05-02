@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href="./style.css">
+    <title>No One is Alone</title>
+</head>
+<body>
+    <header>
+        <div class = "wrapper">
+            <div class = "slidebar">
+                <h2 id="title"><a href = "index.html">No One is Alone</a></h2>  
+                   <ul>
+                        <li><a href = "index.html">Home</a></li>
+                        <li><a href = "about.html">About </a></li>
+                        <li><a href = "#">Volunteer</a>
+                            <ul>
+                                <li><a href="call.html">Call a Friend</a></li>
+                                <li class="current"><a href="#note">Send a Note</a></li>
+                            </ul>
+                        </li>
+                   </ul>          
+            </div>
+    </header>
+
+    <section id = "volunteer2">
+        <div class="container">
+            <div class="text">
+                <h1 id = "hover">Volunteer</h1>
+                <br>
+                <h2><mark id = "tit"><a href = "https://docs.google.com/forms/d/e/1FAIpQLSf50thpgSVXsszN-x2ir4Ns5rm3KITDu93CQpjzPlK1reWFOQ/viewform?usp=sf_link">Send a Note</a></mark></h2> 
+            </div>
+            <div class="box">
+            <img id="img11" src = "./images/33rd.jpg">
+                <h3>3. Each note will be given to a person in need!</h3>
+                <p>We will ensure that your note will be delivered to people in need.</p>
+            </div>
+            <div class = "box">
+                <img id="img22" src = "./images/22nd.png">
+                <h3 id="special">2. We will ship and package them</h3>
+                <p>We will follow all safety procedures to make sure that no germs will be delivered.
+                </p>
+            </div>
+            <div class = "box">
+                <img id="img33" src = "./images/11st.png">
+                <h3>1. Write a note <a id = "form" href = "https://docs.google.com/forms/d/e/1FAIpQLSdaJ14R-bKhLwTiHe8JfF779hnOBstdWjY0wsbfebu-s6c8QQ/viewform?usp=sf_link"><mark id = "form">HERE</mark></a></h3>
+                <p>Note that we will not misuse your personal information.                </p>
+            </div>
+    </section>
+    
+
+
+
+
+
+    <section id = "tips">
+        <div class = "container">
+            <h1 id = "hover">Tips</h1>
+            <p>Thank you so much for volunteering! We want to make sure that you have a good time writing a letter, so here is a guide to help you out. Before your start, read through these tips.</p>
+            <ul class = "listnote">
+                <li>Please DO NOT remind them that it is a good time to be with family and friends, as many of them don't have that in their lives.</li>
+                <li>DO NOT share any religious themed subjects</li>
+                <li>Make sure to be kind and encouraging!</li>
+                <li>Do not share any personal information (eg.phone number, email)</li>
+                <li>Please no profanity and keep the subject on appropriate topics</li>
+                <li>Have fun and remember that you are doing a great kindness!</li>
+            </ul>
+        </div>
+    </section>
+    <img id="tipsnote" src = "images/tips.jpg">  
+
+    <section id = "contact">
+        <h1 id = "hover">Contact Us</h1>
+        <h3>Email: nooneisaloneteam@gmail.com</h3>
+    </section>
+    
+    <footer>
+        <p> No One is Alone &copy; 2020</p>
+    </footer>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type = "text/javascript">
+        function sendEmail(){
+            var name = $("#name");
+            var email = $("#email");
+            var subject = $("#subject");
+            var body = $("#body");
+
+            if(isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(subject) && isNotEmpty(body)){
+                $.ajax({
+                    url: 'sendEmail.php',
+                    method: 'POST',
+                    dataType: 'json',
+                    data:{
+                        name: name.val(),
+                        email: email.val(),
+                        subject: subject.val(),
+                        body: body.val()
+                    }, success: function(response){
+                        $('#myForm')[0].reset();
+                    }
+
+                })
+            }
+            function isNotEmpty(caller){
+                if(caller.val() == ""){
+                    caller.css('border', '1px solid red');
+                    return false;
+                }
+                else{
+                    caller.css('border', '');
+                    return true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

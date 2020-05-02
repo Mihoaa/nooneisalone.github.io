@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href="./style.css">
+    <title>No One is Alone    </title>
+</head>
+<body>
+    <header>
+        <div class = "wrapper">
+            <div class = "slidebar">
+                <h2 id="title"><a href = "index.html"> No One is Alone</a></h2>  
+                   <ul>
+                        <li><a href = "index.html">Home</a></li>
+                        <li class="current"><a href = "#about">About </a></li>
+                        <li><a href = "#">Volunteer</a>
+                            <ul>
+                                <li><a href="call.html">Call a Friend</a></li>
+                                <li><a href="note.html">Send a Note</a></li>
+                            </ul>
+                        </li>
+                   </ul>          
+            </div>
+
+
+    </header>
+    <section id = "about">
+        <div class = "container">
+            <h1 id = "hover">About</h1>
+            <p>Everyone is prone to social isolation and loneliness. We rely on the support of our volunteers to help solve this problem. </p>
+        </div>
+    </section>
+    <section id = "mission">
+        <div class="container">
+            <h1 id = "hover">Our Mission & Value</h1>
+            <p>No one should feel alone during this difficult time. We should all be there for each other as a caring community.
+            </p>
+        </div>
+    </section>
+
+    <section id = "faq">
+        <div class = "faqcontainer">
+            <h1 id = "hover">FAQ</h1>
+                <dic class = "row">
+                    <div class = "col">
+                        <div class="acc">
+                            <h3>Why should I volunteer?</h3>
+                            <div class="content">
+                                <div class = "content-inner">
+                                    <p>Right now, people in your community need help more than ever. This is an easy way that you can give back to your community and help those who need it. A friendly conversation or a kind-hearted note during this time goes a long way, and you can make a huge difference in someone’s life. 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acc">
+                            <h3>What is the time commitment?</h3>
+                            <div class="content">
+                                <div class = "content-inner">
+                                <p>Both options have very little time commitment and are very flexible depending on how much time you can put in. There will be a 5 minute check in with our team before you begin making calls, but you only need to do this once. The call will take about 10 minutes, and your frequency of making calls is up to you. Writing a note will also take about 10 minutes, and you can write as many as you would like. 
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acc">
+                            <h3>But can't germs be transported via paper?
+                            </h3>
+                            <div class="content">
+                                <div class = "content-inner">
+                                    <p>We will ensure that the proper safety precautions are put in place to sanitize everything before delivery.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acc">
+                            <h3>Who would benefit from your help?</h3>
+                            <div class="content">
+                                <div class = "content-inner">
+                                    <p>You would be helping those who are feeling particularly isolated because of the quarantine (the older adults, homeless, tenderloin residents, etc).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <div class="acc">
+                            <h3 id = "special">For calling a person in need, will we have the same companion every week?</h3>
+                            <div class="content">
+                                <div class = "content-inner">
+                                    <p>This is subject to change, but most likely you will have the same companion if you plan to do this long term.   </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acc">
+                            <h3>Are there any age requirements?</h3>
+                            <div class="content">
+                                <div class = "content-inner">
+                                <p>There are no age requirements for making the call or sending notes. But before you make your first call, our team will make sure that you are fit.
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acc">
+                            <h3>How much do these services cost? </h3>
+                            <div class="content">
+                                <div class = "content-inner">
+                                    <p>It is completely free of charge because we believe that everyone deserves to have someone during this time.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acc">
+                            <h3>What locations does name of website serve?</h3>
+                            <div class="content">
+                                <div class = "content-inner">
+                                    <p>We are based in San Francisco but anyone can sign up wherever you are!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+     </section>
+
+     <section id = "help">
+        <div class="container">
+            <div class="column">
+                <a href = "call.html"><img id= "acall" width="100%" src = "images/call.png"></a>
+            </div>
+            <div>
+                <a href = "note.html"><img id="anote"  width="100%" src = "images/note.png"></a>
+            </div>
+        </div>
+    </section>
+    
+    <section id = "contact">
+        <h1 id = "hover">Contact Us</h1>
+        <h3>Email: nooneisaloneteam@gmail.com</h3>
+    </section>
+   
+    
+    <footer>
+        <p> No One is Alone &copy; 2020</p>
+    </footer>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script> 
+    <script type="text/javascript" src="main.js"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type = "text/javascript">
+        function sendEmail(){
+            var name = $("#name");
+            var email = $("#email");
+            var subject = $("#subject");
+            var body = $("#body");
+
+            if(isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(subject) && isNotEmpty(body)){
+                $.ajax({
+                    url: 'sendEmail.php',
+                    method: 'POST',
+                    dataType: 'json',
+                    data:{
+                        name: name.val(),
+                        email: email.val(),
+                        subject: subject.val(),
+                        body: body.val()
+                    }, success: function(response){
+                        $('#myForm')[0].reset();
+                    }
+
+                })
+            }
+            function isNotEmpty(caller){
+                if(caller.val() == ""){
+                    caller.css('border', '1px solid red');
+                    return false;
+                }
+                else{
+                    caller.css('border', '');
+                    return true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

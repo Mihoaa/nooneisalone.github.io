@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href="./style.css">
+    <title>No One is Alone</title>
+</head>
+<body>
+    <header>
+        <div class = "wrapper">
+            <div class = "slidebar">
+                <h2 id="title"><a href = "index.html">No One is Alone</a></h2>  
+                   <ul>
+                        <li class="current"><a href = "#index">Home</a></li>
+                        <li><a href = "about.html">About </a></li>
+                        <li><a href = "#">Volunteer</a>
+                            <ul>
+                                <li><a href="call.html">Call a Friend</a></li>
+                                <li><a href="note.html">Send a Note</a></li>
+                            </ul>
+                        </li>
+                   </ul>          
+            </div>
+
+            
+                    
+        </div>
+    </header>
+
+    <section id = "showcase">
+        <div class = "container">
+            <img src = "./images/showcase.png">
+            <h1> No One is Alone</h1>
+            <p> Do small things to be your bigger self</p>
+        </div>
+    </section>
+
+    <section id = "problem">
+        <div class="container">
+            <h1 id="hover">Current Problem</h1>
+            <ul>
+                <li>The COVID-19 outbreak has left countless people experiencing loneliness more than ever. Anyone can experience loneliness regardless of age, <b>and some are hit with loneliness much more than others.
+                </b></li>
+                <li>Recent studies have shown that loneliness and isolation can result in high blood pressure, heart disease, obesity, a weakened immune system, cognitive decline, depression, anxiety, and even premature death.</li>
+                <li>Many see their social worlds becoming smaller as their social connections are cut off. This makes the already difficult time even more difficult as social isolation takes a toll on the mental and physical health of countless people.</li>
+           </ul>  
+            <img src = "images/problem.jpg">
+        </div>
+    </section>
+    
+    <section id = "solution">
+        <div class="container">
+            <h1 id="hover">Our Approach</h1>
+            <p>We offer a way for you to provide support for those that feel isolated by providing a system that connects people and fosters companionship.</p>
+            <p>You can either write a letter that will be sent directly to those who need it, or we will schedule a one-on-one conversation where you can call someone who needs some comfort. <b>Whatever you choose, your effort will truly make a real difference.</b></p>
+            <img src = "images/solution.jpg">
+            <form action="about.html">
+                <button class="button" style="vertical-align:middle"><span>Click Here to learn more! </span></button>
+            </form>
+        </div>
+    </section>
+
+    <section id = "help">
+        <div class="container">
+            <div class="column">
+                <a href = "call.html"><img id= "hcall" width="100%" src = "images/call.png"></a>
+            </div>
+            <div>
+                <a href = "note.html"><img id="hnote"  width="100%" src = "images/note.png"></a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id = "contact">
+        <h1 id = "hover">Contact Us</h1>
+        <h3>Email: nooneisaloneteam@gmail.com</h3>
+    </section>
+        
+    
+    <footer>
+        <p>No One is Alone Copyright &copy; 2020</p>
+    </footer>
+    
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type = "text/javascript">
+        function sendEmail(){
+            var name = $("#name");
+            var email = $("#email");
+            var subject = $("#subject");
+            var body = $("#body");
+
+            if(isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(subject) && isNotEmpty(body)){
+                $.ajax({
+                    url: 'sendEmail.php',
+                    method: 'POST',
+                    dataType: 'json',
+                    data:{
+                        name: name.val(),
+                        email: email.val(),
+                        subject: subject.val(),
+                        body: body.val()
+                    }, success: function(response){
+                        $('#myForm')[0].reset();
+                    }
+
+                })
+            }
+            function isNotEmpty(caller){
+                if(caller.val() == ""){
+                    caller.css('border', '1px solid red');
+                    return false;
+                }
+                else{
+                    caller.css('border', '');
+                    return true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

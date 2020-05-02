@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href="./style.css">
+    <title>No One is Alone</title>
+</head>
+<body>
+    <header>
+        <div class = "wrapper">
+            <div class = "slidebar">
+                <h2 id="title"><a href = "index.html"> No One is Alone</a></h2>  
+                   <ul>
+                        <li><a href = "index.html">Home</a></li>
+                        <li><a href = "about.html">About </a></li>
+                        <li><a href = "#">Volunteer</a>
+                            <ul>
+                                <li class="current"><a href="#call">Call a Friend</a></li>
+                                <li><a href="note.html">Send a Note</a></li>
+                            </ul>
+                        </li>
+                   </ul>          
+            </div>
+    </header>
+
+    <section id = "volunteer1">
+        <div class="container">
+            <div class="text">
+                <h1 id = "hover">Volunteer</h1>  
+                <br>    
+                <h2><mark id = "tit"><a href = "https://docs.google.com/forms/d/e/1FAIpQLSf50thpgSVXsszN-x2ir4Ns5rm3KITDu93CQpjzPlK1reWFOQ/viewform?usp=sf_link">Call a Friend</a></mark></h2>      
+            </div>
+            <div class="box">
+            <img id="img1" src = "./images/1st.jpg">
+                <h3>1. Fill Out the Form <a id = "form" href = "https://docs.google.com/forms/d/e/1FAIpQLSf50thpgSVXsszN-x2ir4Ns5rm3KITDu93CQpjzPlK1reWFOQ/viewform?usp=sf_link"><mark id = "form">HERE</mark></a></h3>
+                <p>Note that we will not misuse your personal information.  </p>
+            </div>
+            <div class = "box">
+                <img id="img2" src = "./images/2nd.jpg">
+                <h3 id="special">2. Wait for the email</h3>
+                <p>You will be notified to call a person in need at one of your chosen time slots.</p>
+            </div>
+            <div class = "box">
+                <img id="img3" src = "./images/3rd.jpg">
+                <h3>3. Call for support!</h3>
+                <p>Call and have fun! </p>
+        </div>
+    </section>
+
+
+    <section id = "tips">
+        <div class = "container">
+            <h1 id = "hover">Tips</h1>
+            <p>Thank you so much for volunteering! We want to make sure that you and your caller have a good time, so here is a guide to help you out. Before your call, read through these tips.</p>
+            <ul>
+                <li>Make sure to call at the scheduled time so you don’t keep them waiting</li>
+                <li>Go to an area where there is not a lot of background noise</li>
+                <li>Try your best not to interrupt, and don’t be afraid to share your thoughts and stories </li>
+                <li>Speak slowly and clearly, especially for the seniors that are hard of hearing. Make sure to check in every now and then to see if they can hear you clearly.</li>
+                <li>Try your best to keep the conversation positive! We want to make sure that both of you have a fun and happy conversation that can lift their spirits!</li>
+                <li>Please no profanity and keep the subject on appropriate topics</li>
+                <li>Keep in mind that they are a completely different person with different opinions and beliefs, so be open-minded and kind!</li>
+                <li>Have fun and remember that you are doing a great kindness!</li>
+            </ul>
+            <img id="tipscall" src = "images/tips.jpg">  
+        </div>
+    </section>
+  
+    <section id = "contact">
+        <h1 id = "hover">Contact Us</h1>
+        <h3>Email: nooneisaloneteam@gmail.com</h3>
+    </section>
+
+    
+    <footer>
+        <p>No One is Alone &copy; 2020</p>
+    </footer>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type = "text/javascript">
+        function sendEmail(){
+            var name = $("#name");
+            var email = $("#email");
+            var subject = $("#subject");
+            var body = $("#body");
+
+            if(isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(subject) && isNotEmpty(body)){
+                $.ajax({
+                    url: 'sendEmail.php',
+                    method: 'POST',
+                    dataType: 'json',
+                    data:{
+                        name: name.val(),
+                        email: email.val(),
+                        subject: subject.val(),
+                        body: body.val()
+                    }, success: function(response){
+                        $('#myForm')[0].reset();
+                    }
+
+                })
+            }
+            function isNotEmpty(caller){
+                if(caller.val() == ""){
+                    caller.css('border', '1px solid red');
+                    return false;
+                }
+                else{
+                    caller.css('border', '');
+                    return true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
